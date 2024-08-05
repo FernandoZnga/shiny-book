@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Book</title>
+</head>
+
+<body>
+    <h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Book</h1>
+    {% if form.instance.pk %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    {% endif %}
+    <a href="{% url 'book_list' %}">Back to list</a>
+</body>
+
+</html>
